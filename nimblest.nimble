@@ -12,6 +12,7 @@ bin           = @["nimblest"]
 
 requires "nim >= 1.6.10"
 requires "owlkettle >= 2.1.0"
+requires "jsony >= 1.1.4"
 
 
 task play, "run example":

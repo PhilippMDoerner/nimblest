@@ -2,13 +2,11 @@ import pkg/owlkettle
 import ./frontend/pages
 import ./frontend/components/molecules/[sidebar, nimble_import_button, burger_menu]
 import ./types
-
-proc loadSavedData(): seq[Project] =
-  result = @[Project(name: "Potato")]
+import ./backend/nimblest_repository
 
 viewable App:
+  nimblestData: NimblestData = loadNimblestFile()
   page: PageType
-  projects: seq[Project] = loadSavedData()
 
 method view(state: AppState): Widget =
   gui:
@@ -20,7 +18,7 @@ method view(state: AppState): Widget =
 
       Paned:
         initialPosition = 200
-        Sidebar(projects = state.projects)
+        Sidebar(projects = state.nimblestData.projects)
         Box():
           discard
 
