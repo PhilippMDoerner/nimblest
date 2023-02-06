@@ -1,7 +1,7 @@
-import owlkettle
-import ./pages
+import pkg/owlkettle
+import ./frontend/pages
+import ./frontend/components/molecules/[sidebar, nimble_import_button, burger_menu]
 import ./types
-import ./components/molecules/[sidebar, nimble_import_button, burger_menu]
 
 proc loadSavedData(): seq[Project] =
   result = @[Project(name: "Potato")]

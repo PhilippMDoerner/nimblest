@@ -1,4 +1,4 @@
-import owlkettle
+import pkg/owlkettle
 import ../../icons
 
 viewable BurgerMenu:

@@ -1,6 +1,6 @@
-import owlkettle
+import pkg/owlkettle
 import ../atoms/left_label
-import ../../types
+import ../../../types
 
 viewable Sidebar:
   projects: seq[Project]

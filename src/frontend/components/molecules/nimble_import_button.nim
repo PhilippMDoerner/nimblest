@@ -1,4 +1,4 @@
-import owlkettle
+import pkg/owlkettle
 
 viewable NimbleImportButton:
   discard
