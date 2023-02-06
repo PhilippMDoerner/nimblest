@@ -10,6 +10,8 @@ method view*(state: SidebarState): Widget =
     Paned {.resize: true.}:
       ScrolledWindow {.resize: true.}:
         ListBox:
+          selectionMode = SelectionMode.SelectionBrowse
+
           LeftLabel():
             text = "General"
 
