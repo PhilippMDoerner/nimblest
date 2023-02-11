@@ -5,7 +5,7 @@ import ./types
 import ./backend/nimblest_repository
 
 viewable App:
-  nimblestData: NimblestData = loadNimblestFile()
+  nimblestData: NimblestData = loadInitialNimblestData()
   page: PageType
 
 method view(state: AppState): Widget =

@@ -3,7 +3,7 @@ import ../atoms/left_label
 import ../../../types
 
 viewable Sidebar:
-  projects: seq[Project]
+  projects: seq[ProjectInfo]
 
 method view*(state: SidebarState): Widget =
   gui:

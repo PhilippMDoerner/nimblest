@@ -1,16 +1,8 @@
-import std/strutils
+import nimblepkg/[options, packageparser, packageinfotypes, sha1Hashes, paths]
 
-type SemVer = array[3, int]
-proc `$`*(versionNumbers: SemVer): string = versionNumbers.join(".")
-
-type Package* = object
-  version*: Semver
-
-type Project* = object
-  name*: string
-  dependencies*: seq[Package]
-
-type NimbleIniData* = object
+type ProjectInfo* = packageinfotypes.PackageInfo
 
 type NimblestData* = ref object
-  projects*: seq[Project]
+  version*: string
+  nimbleFiles*: seq[string]
+  projects*: seq[ProjectInfo]
