@@ -1,8 +1,8 @@
-import nimblepkg/[options, packageparser, packageinfotypes, sha1Hashes, paths]
+import nimblepkg/[packageinfotypes]
 
 type ProjectInfo* = packageinfotypes.PackageInfo
 
 type NimblestData* = ref object
   version*: string
   nimbleFiles*: seq[string]
-  projects*: seq[ProjectInfo]
+  projects*: ref seq[ProjectInfo]

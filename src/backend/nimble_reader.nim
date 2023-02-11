@@ -1,5 +1,4 @@
-import nimblepkg/[options, packageparser, packageinfotypes, paths]
-import std/os
+import nimblepkg/[options, packageparser]
 import ../types
 
 proc generateDummyOptions(): Options =

@@ -1,26 +1,39 @@
 import pkg/owlkettle
 import ./frontend/pages
-import ./frontend/components/molecules/[sidebar, nimble_import_button, burger_menu]
+import ./frontend/components/molecules/[
+  sidebar, 
+  nimble_import_button, 
+  project_top_bar, 
+  nim_info_button, 
+  burger_menu,
+  package_button
+]
 import ./types
 import ./backend/nimblest_repository
+
+{.warning[User]:off.}
+{.warning[LockLevel]:off.}
 
 viewable App:
   nimblestData: NimblestData = loadInitialNimblestData()
   page: PageType
 
 method view(state: AppState): Widget =
+  let projects = state.nimblestData.projects
   gui:
     Window:
-      title = "nimblest"
       HeaderBar {.addTitlebar.}:
+        # Left (Left-most first)
         NimbleImportButton() {.addLeft.}
-        BurgerMenu() {.addRight.}
 
-      Paned:
-        initialPosition = 200
-        Sidebar(projects = state.nimblestData.projects)
-        Box():
-          discard
+        # Right (Right-most first)
+        BurgerMenu() {.addRight.}
+        NimInfoButton() {.addRight.}
+        PackageButton() {.addRight.}
+        ProjectTopBar(projects = state.nimblestData.projects) {.addRight.}
+
+      Box():
+        discard
 
 when isMainModule:
   brew(gui(App()))

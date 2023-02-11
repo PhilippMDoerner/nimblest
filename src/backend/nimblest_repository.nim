@@ -1,4 +1,4 @@
-import std/[sets, os, sequtils]
+import std/[os, sequtils]
 import pkg/jsony
 import ./nimble_reader
 import ../types
@@ -38,10 +38,12 @@ proc readNimblestDataFromDisk(): StoredNimblestData =
 
 proc loadInitialNimblestData*(): NimblestData =
   let storedData: StoredNimblestData = readNimblestDataFromDisk()
-  let parsedNimbleFiles = storedData.projectNimbles.mapIt(it.parseNimbleFile())
+
+  var projects: ref seq[ProjectInfo] = new(seq[ProjectInfo])
+  projects[] = storedData.projectNimbles.mapIt(it.parseNimbleFile())
 
   result = NimblestData(
     version: storedData.version,
     nimbleFiles: storedData.projectNimbles,
-    projects: parsedNimbleFiles
+    projects: projects
   )

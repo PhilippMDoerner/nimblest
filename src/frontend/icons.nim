@@ -23,5 +23,6 @@ type IconName* = enum
   inConfiguration = "preferences-system-symbolic"
   inDetail = "view-more-symbolic"
   inList = "view-list-symbolic"
+  inInfo = "info-symbolic"
 
 converter iconToString*(icon: IconName): string = $icon
