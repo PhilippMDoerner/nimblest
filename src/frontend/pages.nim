@@ -1,12 +1,12 @@
 type PageType* = enum
-  GlobalOverview
-  ProjectOverview
+  ptGlobalOverview
+  ptProjectOverview
 
 type GlobalTabType* = enum
-  Overview
-  Packages
-  Search
+  gttOverview
+  gttPackages
+  gttSearch
 
 type ProjectTabType* = enum
-  Overview
-  Tasks
+  pttOverview
+  pttTasks
