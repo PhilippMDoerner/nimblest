@@ -1,3 +1,4 @@
+import std/sequtils
 import pkg/owlkettle
 import ../../icons
 import ../../../types
@@ -12,11 +13,19 @@ viewable ProjectTopBar:
   viewState: ViewState = ViewState.DisplayProjectState
 
 method view*(state: ProjectTopBarState): Widget =
-  let activeProject = state.projects[state.activeProjectIndex]
-  gui:
-    Entry {.resize: true.}:
-      width = 50
-      text = activeProject.basicInfo.name
+  var projectItems: seq[string] = @[]
+  for project in state.projects[]:
+    projectItems.add project.basicInfo.name
 
+  gui:
+    Box(spacing = 6) {.expand: true, resize: true.}: 
+      sensitive = true           
+      DropDown() {.expand: true.}:
+        sensitive = true
+        margin = Margin(top: 0, bottom: 0, left: 50, right: 50)
+        sizeRequest = (500, -1)
+        items = projectItems
+        selected = state.activeProjectIndex
+        enableSearch = true
 
 export ProjectTopBar

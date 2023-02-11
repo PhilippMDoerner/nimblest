@@ -11,7 +11,7 @@ bin           = @["nimblest"]
 # Dependencies
 
 requires "nim >= 1.6.10"
-requires "owlkettle >= 2.1.0"
+requires "https://github.com/can-lehmann/owlkettle@#head"
 requires "jsony >= 1.1.4"
 
 
@@ -21,7 +21,7 @@ task play, "run example":
   --run
   --styleCheck:usages
   --spellSuggest:50
-  --mm:orc
+  --mm:refc
   setCommand "c", "src/nimblest.nim"
 
 task release, "Compile a release build binary":
