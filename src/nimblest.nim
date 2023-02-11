@@ -1,5 +1,4 @@
 import pkg/owlkettle
-import ./frontend/pages
 import ./frontend/components/molecules/[
   nimble_import_button, 
   project_top_bar, 
@@ -7,6 +6,7 @@ import ./frontend/components/molecules/[
   #nim_info_button, 
   #package_button
 ]
+import ./frontend/page
 import ./types
 import ./backend/nimblest_repository
 
@@ -25,13 +25,13 @@ method view(state: AppState): Widget =
         NimbleImportButton() {.addLeft.}
 
         # Right (Right-most first)
-        BurgerMenu() {.addRight.}
+        # BurgerMenu() {.addRight.}
         #NimInfoButton() {.addRight.} # TODO: Implement
         #PackageButton() {.addRight.} # TODO: Implement
         ProjectTopBar() {.addRight.}:
           projects = state.nimblestData.projects
 
-      Box()
+      Page()
 
 when isMainModule:
   brew(gui(App()))
