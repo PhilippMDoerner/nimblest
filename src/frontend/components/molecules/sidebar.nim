@@ -12,14 +12,8 @@ method view*(state: SidebarState): Widget =
         ListBox:
           selectionMode = SelectionMode.SelectionBrowse
 
-          LeftLabel():
-            text = "General"
-
-          LeftLabel():
-            text = "Search"
-
           for project in state.projects:
             LeftLabel():
-              text = project.name
+              text = project.basicInfo.name
 
 export Sidebar
