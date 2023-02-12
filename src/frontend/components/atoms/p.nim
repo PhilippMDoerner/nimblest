@@ -34,7 +34,7 @@ method view*(state: PState): Widget =
       0.5
 
   gui:
-    Label {.expand: false.}:
+    Label:
       useMarkup = true
       xAlign = alignment
       text = state.buildLabelRepr()
