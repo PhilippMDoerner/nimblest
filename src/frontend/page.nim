@@ -20,19 +20,16 @@ proc togglePage(currentPage: var PageType) =
 
 method view*(state: PageState): Widget =
   gui:
-    Box(spacing = 6, orient = OrientY) {.expand:false.}:
-      Box(spacing = 6, margin = 12, orient = OrientX) {.expand: false.}:
-        style = {BoxStyle.BoxCard}
-        Box()
-        Button {.expand: false.}:
+    Box(spacing = 6, margin = 16, orient = OrientY) {.vAlign: AlignStart.}:
+      Box() {.expand: false, hAlign: AlignEnd.}:
+        Button:
           style = {ButtonSuggested}
           icon = case state.kind:
             of PageType.ptOverview: IconName.inList
             of PageType.ptTasks: IconName.inOverview
 
           proc clicked() = state.kind.togglePage()
-
-
+          
       case state.kind:
       of PageType.ptOverview:
         ProjectOverview():
