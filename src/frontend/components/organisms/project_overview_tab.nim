@@ -24,12 +24,12 @@ method view*(state: ProjectOverviewState): Widget =
   let dependencyItems: seq[KeyValuePair] = dependencies.toKeyValuePairs()
 
   gui:
-    Box(orient = OrientY) {.hAlign: AlignCenter, vAlign: AlignStart.}:
-      Box(orient = OrientY, margin = Margin(bottom: 30)) {.expand: false, vAlign: AlignStart.}:
+    Box(orient = OrientY, spacing = 50) {.hAlign: AlignCenter, vAlign: AlignStart.}:
+      Box(orient = OrientY) {.expand: false, vAlign: AlignStart.}:
         H1(text = state.project.basicInfo.name, fontWeight = h1.bold)
         H3(text = state.project.description)
         
-      Box(margin = Margin(bottom: 30)) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
+      Box() {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
         KeyValueDisplayList(items = metaDataItems)
       
       Box(orient = OrientY) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
