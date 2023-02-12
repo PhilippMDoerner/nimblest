@@ -7,6 +7,6 @@ viewable ProjectOverview:
 
 method view*(state: ProjectOverviewState): Widget =
   gui:
-    H1(text = state.project.basicInfo.name)
+    H1(text = state.project.basicInfo.name, fontWeight = FontWeight.bold)
 
 export ProjectOverview

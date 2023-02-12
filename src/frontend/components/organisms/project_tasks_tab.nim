@@ -7,6 +7,6 @@ viewable ProjectTasks:
 
 method view*(state: ProjectTasksState): Widget =
   gui:
-    H1(text="ProjectTasks")
+    H1(text="ProjectTasks", fontWeight = FontWeight.bold)
 
 export ProjectTasks
