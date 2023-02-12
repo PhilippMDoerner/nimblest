@@ -21,7 +21,7 @@ proc buildLabelRepr(state: H1State): string =
 
 method view*(state: H1State): Widget =
   gui:
-    Label:
+    Label {.expand: false.}:
       useMarkup = true
       text = state.buildLabelRepr()
 

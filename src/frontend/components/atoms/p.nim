@@ -1,6 +1,14 @@
 import pkg/owlkettle
 import std/strformat
 
+type FontWeight* = enum
+  ultralight
+  light
+  normal
+  bold
+  ultrabold
+  heavy
+
 viewable P:
   text: string
   fontWeight: FontWeight = Fontweight.normal
@@ -13,7 +21,7 @@ proc buildLabelRepr(state: PState): string =
 
 method view*(state: PState): Widget =
   gui:
-    Label:
+    Label {.expand: false.}:
       useMarkup = true
       text = state.buildLabelRepr()
 
