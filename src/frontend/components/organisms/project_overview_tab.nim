@@ -1,10 +1,12 @@
 import pkg/owlkettle
+import ../atoms/h1
+import ../../../types
 
 viewable ProjectOverview:
-  discard
+  project: ProjectInfo
 
 method view*(state: ProjectOverviewState): Widget =
   gui:
-    Label(text="ProjectOverview")
+    H1(text = state.project.basicInfo.name)
 
 export ProjectOverview

@@ -1,19 +1,22 @@
 import pkg/owlkettle
 import ./components/organisms/[project_overview_tab, project_tasks_tab]
 import ./icons
+import ../types
 
 type PageType* = enum
   ptOverview
   ptTasks
 
-
 viewable Page:
+  project: ProjectInfo
   kind: PageType = PageType.ptOverview
 
 proc togglePage(currentPage: var PageType) =
   currentPage = case currentPage:
     of PageType.ptOverview: PageType.ptTasks
     of PageType.ptTasks: PageType.ptOverview
+
+
 
 method view*(state: PageState): Widget =
   gui:
@@ -32,8 +35,10 @@ method view*(state: PageState): Widget =
 
       case state.kind:
       of PageType.ptOverview:
-        ProjectOverview()
+        ProjectOverview():
+          project = state.project
       of PageType.ptTasks:
-        ProjectTasks()
+        ProjectTasks():
+          project = state.project
 
 export Page

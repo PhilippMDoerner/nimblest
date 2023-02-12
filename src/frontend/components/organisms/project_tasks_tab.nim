@@ -1,10 +1,12 @@
 import pkg/owlkettle
+import ../atoms/h1
+import ../../../types
 
 viewable ProjectTasks:
-  discard
+  project: ProjectInfo
 
 method view*(state: ProjectTasksState): Widget =
   gui:
-    Label(text="ProjectTasks")
+    H1(text="ProjectTasks")
 
 export ProjectTasks
