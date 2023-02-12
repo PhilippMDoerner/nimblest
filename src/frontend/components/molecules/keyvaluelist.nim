@@ -12,21 +12,28 @@ viewable KeyValueDisplayList:
 
 method view*(state: KeyValueDisplayListState): Widget =
   gui:
-    Box(orient = OrientX):
-
-      Box(orient = OrientY, margin = Margin(right: state.boxSpace)){.hAlign: AlignStart.}:
+    Box(orient = OrientX) {.vAlign: AlignStart.}:
+      # Let Box
+      Box(orient = OrientY, margin = Margin(right: state.boxSpace)){.hAlign: AlignStart, vAlign: AlignStart.}:
+        # Heading
         if state.heading.isSome():
-          H3(text = state.heading.get().key, fontWeight = h3.bold, margin = Margin(bottom: 10))
-
-        for (key, value) in state.items:
-          P(text = key, fontWeight = p.bold)
-
-      Box(orient = OrientY){.hAlign: AlignEnd.}:
+          H3(text = state.heading.get().key, fontWeight = h3.bold)
+        
+        # Body
+        Box(orient = OrientY) {.vAlign: AlignStart.}:
+          for (key, value) in state.items:
+            P(text = key, fontWeight = p.bold)
+      
+      # Right Box
+      Box(orient = OrientY){.hAlign: AlignEnd, vAlign: AlignStart.}:
+        # Heading
         if state.heading.isSome():
-          H3(text = state.heading.get().value, fontWeight = h3.bold, margin = Margin(bottom: 10))
+          H3(text = state.heading.get().value, fontWeight = h3.bold)
 
-        for (key, value) in state.items:
-          P(text = value)
+        # Body
+        Box(orient = OrientY) {.vAlign: AlignStart.}:
+          for (key, value) in state.items:
+            P(text = value)
 
 
 export KeyValueDisplayList

@@ -20,20 +20,20 @@ method view*(state: ProjectOverviewState): Widget =
     ("Author: ", state.project.author),
     ("License: ", state.project.license)
   ]
-
   let dependencies: seq[PkgTuple] = state.project.requires
   let dependencyItems: seq[KeyValuePair] = dependencies.toKeyValuePairs()
+
   gui:
-    Box(orient = OrientY) {.hAlign: AlignCenter.}:
-      Box(orient = OrientY, margin = Margin(bottom: 30)):
-        H1(text = state.project.basicInfo.name, fontWeight = h1.bold) {.expand: false.}: discard
+    Box(orient = OrientY) {.hAlign: AlignCenter, vAlign: AlignStart.}:
+      Box(orient = OrientY, margin = Margin(bottom: 30)) {.expand: false, vAlign: AlignStart.}:
+        H1(text = state.project.basicInfo.name, fontWeight = h1.bold)
         H3(text = state.project.description)
         
-      Box(margin = Margin(bottom: 30)) {.hAlign: AlignCenter.}:
+      Box(margin = Margin(bottom: 30)) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
         KeyValueDisplayList(items = metaDataItems)
       
-      Box(orient = OrientY) {.hAlign: AlignCenter.}:
-        H2(text = "Dependencies", fontWeight = h2.bold, margin = Margin(bottom: 40))
+      Box(orient = OrientY) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
+        H2(text = "Dependencies", fontWeight = h2.bold)
         KeyValueDisplayList(items = dependencyItems, boxSpace = 30):
           heading = some(("Package", "Version"))
 
