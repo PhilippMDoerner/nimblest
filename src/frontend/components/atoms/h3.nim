@@ -12,7 +12,7 @@ type FontWeight* = enum
 viewable H3:
   text: string
   fontWeight: FontWeight = Fontweight.normal
-  margin: Margin = Margin(bottom: 8)
+  margin: Margin = Margin(bottom: 2)
 
 proc buildLabelRepr(state: H3State): string =
   var properties = fmt"""weight="{state.fontWeight}" text_transform="capitalize" size="large" """
