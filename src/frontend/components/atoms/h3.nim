@@ -21,7 +21,8 @@ proc buildLabelRepr(state: H3State): string =
 
 method view*(state: H3State): Widget =
   gui:
-    Label {.expand: false.}:
+    Label:
+      margin = state.margin
       useMarkup = true
       text = state.buildLabelRepr()
 
