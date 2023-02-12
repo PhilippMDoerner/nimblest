@@ -1,5 +1,5 @@
 import pkg/owlkettle
-import ../atoms/left_label
+import ../atoms/text
 import ../../../types
 
 viewable Sidebar:
@@ -13,7 +13,6 @@ method view*(state: SidebarState): Widget =
           selectionMode = SelectionMode.SelectionBrowse
 
           for project in state.projects:
-            LeftLabel():
-              text = project.basicInfo.name
+            P(text = project.basicInfo.name)
 
 export Sidebar

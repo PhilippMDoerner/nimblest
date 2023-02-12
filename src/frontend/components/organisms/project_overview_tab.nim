@@ -1,6 +1,6 @@
 import pkg/owlkettle
 import std/[strutils, strformat, options]
-import ../atoms/[p, h1, h2, h3]
+import ../atoms/text
 import ../molecules/keyvaluelist
 import ../../../types
 
@@ -26,14 +26,14 @@ method view*(state: ProjectOverviewState): Widget =
   gui:
     Box(orient = OrientY, spacing = 50) {.hAlign: AlignCenter, vAlign: AlignStart.}:
       Box(orient = OrientY) {.expand: false, vAlign: AlignStart.}:
-        H1(text = state.project.basicInfo.name, fontWeight = h1.bold)
+        H1(text = state.project.basicInfo.name, fontWeight = bold)
         H3(text = state.project.description)
         
       Box() {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
         KeyValueDisplayList(items = metaDataItems)
       
       Box(orient = OrientY) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
-        H2(text = "Dependencies", fontWeight = h2.bold)
+        H2(text = "Dependencies", fontWeight = bold)
         KeyValueDisplayList(items = dependencyItems, spacing = 30):
           heading = some(("Package", "Version"))
 

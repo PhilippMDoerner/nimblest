@@ -1,5 +1,5 @@
 import pkg/owlkettle
-import ../atoms/[h3, p]
+import ../atoms/text
 import std/options
 
 type KeyValuePair* = tuple[key: string, value: string]
@@ -17,18 +17,18 @@ method view*(state: KeyValueDisplayListState): Widget =
       Box(orient = OrientY){.hAlign: AlignStart, vAlign: AlignStart.}:
         # Heading
         if state.heading.isSome():
-          H3(text = state.heading.get().key, fontWeight = h3.bold)
+          H3(text = state.heading.get().key, fontWeight = bold)
         
         # Body
         Box(orient = OrientY) {.vAlign: AlignStart.}:
           for (key, value) in state.items:
-            P(text = key, fontWeight = p.bold)
+            P(text = key, fontWeight = bold)
       
       # Right Box
       Box(orient = OrientY){.hAlign: AlignEnd, vAlign: AlignStart.}:
         # Heading
         if state.heading.isSome():
-          H3(text = state.heading.get().value, fontWeight = h3.bold)
+          H3(text = state.heading.get().value, fontWeight = bold)
 
         # Body
         Box(orient = OrientY) {.vAlign: AlignStart.}:

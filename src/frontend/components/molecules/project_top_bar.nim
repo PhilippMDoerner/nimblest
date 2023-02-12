@@ -2,7 +2,7 @@ import std/sequtils
 import pkg/owlkettle
 import ../../icons
 import ../../../types
-import ../atoms/p
+import ../atoms/text
 
 type ViewState = enum
   SearchState

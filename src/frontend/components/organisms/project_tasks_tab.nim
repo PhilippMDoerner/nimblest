@@ -1,5 +1,5 @@
 import pkg/owlkettle
-import ../atoms/h1
+import ../atoms/text
 import ../../../types
 
 viewable ProjectTasks:
