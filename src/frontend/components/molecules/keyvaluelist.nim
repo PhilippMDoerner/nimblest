@@ -7,14 +7,14 @@ type KeyValuePair* = tuple[key: string, value: string]
 viewable KeyValueDisplayList:
   items: seq[KeyValuePair]
   heading: Option[KeyValuePair] = none(KeyValuePair)
-  boxSpace: int = 12  ## Space between Key and value
+  spacing: int = 12  ## Space between Key and value
 
 
 method view*(state: KeyValueDisplayListState): Widget =
   gui:
-    Box(orient = OrientX) {.vAlign: AlignStart.}:
+    Box(orient = OrientX, spacing = state.spacing) {.vAlign: AlignStart.}:
       # Let Box
-      Box(orient = OrientY, margin = Margin(right: state.boxSpace)){.hAlign: AlignStart, vAlign: AlignStart.}:
+      Box(orient = OrientY){.hAlign: AlignStart, vAlign: AlignStart.}:
         # Heading
         if state.heading.isSome():
           H3(text = state.heading.get().key, fontWeight = h3.bold)

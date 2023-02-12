@@ -34,7 +34,7 @@ method view*(state: ProjectOverviewState): Widget =
       
       Box(orient = OrientY) {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
         H2(text = "Dependencies", fontWeight = h2.bold)
-        KeyValueDisplayList(items = dependencyItems, boxSpace = 30):
+        KeyValueDisplayList(items = dependencyItems, spacing = 30):
           heading = some(("Package", "Version"))
 
 export ProjectOverview
