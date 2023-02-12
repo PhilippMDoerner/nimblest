@@ -2,6 +2,7 @@ import std/sequtils
 import pkg/owlkettle
 import ../../icons
 import ../../../types
+import ../atoms/p
 
 type ViewState = enum
   SearchState
@@ -19,10 +20,12 @@ method view*(state: ProjectTopBarState): Widget =
 
   gui:
     Box(spacing = 6) {.expand: true, resize: true.}: 
-      sensitive = true           
+      sensitive = true
+      margin = Margin(top: 0, bottom: 0, left: 50, right: 50)
+      
       DropDown() {.expand: true.}:
+        tooltip = "Project"
         sensitive = true
-        margin = Margin(top: 0, bottom: 0, left: 50, right: 50)
         sizeRequest = (500, -1)
         items = projectItems
         selected = state.activeProjectIndex[]
