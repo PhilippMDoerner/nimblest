@@ -16,7 +16,7 @@ viewable ProjectTopBar:
 method view*(state: ProjectTopBarState): Widget =
   var projectItems: seq[string] = @[]
   for project in state.projects[]:
-    projectItems.add project.basicInfo.name
+    projectItems.add project.name()
 
   gui:
     Box(spacing = 6) {.expand: true, resize: true.}: 

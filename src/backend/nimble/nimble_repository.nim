@@ -44,4 +44,5 @@ proc generateDummyOptions(): Options =
 proc parseNimbleFile*(nimblePath: string): ProjectInfo =
   let options = generateDummyOptions()
 
-  result = getPkgInfoFromFile(nimblePath.NimbleFile, options)
+  let packageInfo = getPkgInfoFromFile(nimblePath.NimbleFile, options)
+  result = newProjectInfo(packageInfo)

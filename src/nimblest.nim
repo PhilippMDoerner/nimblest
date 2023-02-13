@@ -1,3 +1,4 @@
+import std/[tables, options]
 import pkg/owlkettle
 import ./frontend/components/molecules/[
   nimble_import_button, 

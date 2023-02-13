@@ -16,18 +16,18 @@ proc toKeyValuePairs(list: seq[PkgTuple]): seq[KeyValuePair] =
 
 method view*(state: ProjectOverviewState): Widget =
   let metaDataItems: seq[KeyValuePair] = @[
-    ("Version: ", $state.project.basicInfo.version),
-    ("Author: ", state.project.author),
-    ("License: ", state.project.license)
+    ("Version: ", $state.project.version()),
+    ("Author: ", state.project.author()),
+    ("License: ", state.project.license())
   ]
-  let dependencies: seq[PkgTuple] = state.project.requires
+  let dependencies: seq[PkgTuple] = state.project.dependencies()
   let dependencyItems: seq[KeyValuePair] = dependencies.toKeyValuePairs()
 
   gui:
     Box(orient = OrientY, spacing = 50) {.hAlign: AlignCenter, vAlign: AlignStart.}:
       Box(orient = OrientY) {.expand: false, vAlign: AlignStart.}:
-        H1(text = state.project.basicInfo.name, fontWeight = bold)
-        H3(text = state.project.description)
+        H1(text = state.project.name(), fontWeight = bold)
+        H3(text = state.project.description())
         
       Box() {.expand: false, hAlign: AlignCenter, vAlign: AlignStart.}:
         KeyValueDisplayList(items = metaDataItems)

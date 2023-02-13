@@ -1,8 +1,9 @@
 import pkg/owlkettle
 import ../atoms/text
 import std/options
+import ../../../types
 
-type KeyValuePair* = tuple[key: string, value: string]
+export KeyValuePair
 
 viewable KeyValueDisplayList:
   items: seq[KeyValuePair]
