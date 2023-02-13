@@ -8,7 +8,7 @@ import ./frontend/components/molecules/[
 ]
 import ./frontend/page
 import ./types
-import ./backend/nimblest_repository
+import ./backend
 
 {.warning[User]:off.}
 {.warning[LockLevel]:off.}
