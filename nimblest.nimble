@@ -11,7 +11,7 @@ bin           = @["nimblest"]
 # Dependencies
 
 requires "nim >= 1.6.10"
-requires "https://github.com/can-lehmann/owlkettle@#head"
+requires "https://github.com/can-lehmann/owlkettle#head"
 requires "jsony >= 1.1.4"
 
 
