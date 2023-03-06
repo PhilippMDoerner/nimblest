@@ -11,6 +11,8 @@ type ProjectInfo* = ref object
   info*: PackageInfo
   dependencyVersions*: Option[Table[string, Version]]
 
+type PkgVersions* = Table[string, Version]
+
 proc newProjectInfo*(info: PackageInfo): ProjectInfo = 
   ProjectInfo(info: info, dependencyVersions: none(Table[string, Version]))
 

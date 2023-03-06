@@ -13,16 +13,28 @@ bin           = @["nimblest"]
 requires "nim >= 1.6.10"
 requires "https://github.com/can-lehmann/owlkettle#head"
 requires "jsony >= 1.1.4"
+requires "nimble >= 0.14.2"
+requires "compiler"
+requires "https://github.com/PhilippMDoerner/owlling#head"
 
+# External Dependencies
+# Git
+# Nimble
+# OpenSSL through nimble
 
 task play, "run example":
   --outdir:"."
-  --panics:on
+  # --panics:on # Bricks owlkettle for now
+  --define:ssl
   --run
   --styleCheck:usages
   --spellSuggest:50
+  --path:"/home/philipp/dev/owlling"
   --mm:refc
   setCommand "c", "src/nimblest.nim"
+
+task dev, "compile and run dev build":
+  exec "nim r -d:ssl --mm:refc --panics:on src/nimblest.nim"
 
 task release, "Compile a release build binary":
   --outdir:"."
@@ -32,3 +44,7 @@ task release, "Compile a release build binary":
   --run
   --mm:orc
   setCommand "c", "src/nimblest.nim"
+
+task reOwl, "Reinstall owlling":
+  exec "rm -r ~/.nimble/pkgs2/owlling-0.1.0-*"
+  exec "nimble play"
